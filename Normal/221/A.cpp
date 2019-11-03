@@ -11,10 +11,8 @@ int main() {
     //freopen("output.txt", "w", stdout);
     scanf("%d", &n);
     iota(arr, arr+n+1, 0);
-    for (int i = n; i; --i) {
-        if (i==1) {
-            break;
-        }
+    for (int i = 2; i<=n; ++i) {
+
         swap(arr[i], arr[i-1]);
     }
     for (int i = 1; i <= n; ++i) {

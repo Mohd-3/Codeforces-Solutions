@@ -26,7 +26,8 @@ void sieve () {
 }
 
 void fact(int n) {
-    set<int> tmp;
+    unordered_set<int> tmp;
+    tmp.reserve(n);
     while (n!=1) {
         tmp.insert(spf[n]);
         n = n/spf[n];

@@ -22,7 +22,7 @@ int main() {
     IOS
     cin >> l >> r;
     gen();
-    sort(v.begin(), v.end());
+    //sort(v.begin(), v.end());
     int st = lower_bound(v.begin(), v.end(), l)-v.begin();
     ll ans = 0;
     while (l <= r) {

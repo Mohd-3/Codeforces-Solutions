@@ -2,14 +2,6 @@
 using namespace std;
 
 int k, d;
-int sum(int x) {
-    int s = 0;
-    while (x) {
-        s += x%10;
-        x /= 10;
-    }
-    return s;
-}
 int main() {
     cin >> k >> d;
     if (d == 0 && k > 1) {
@@ -21,7 +13,6 @@ int main() {
         cout << 0;
     }
     cout << endl;
-
     return 0;
 }
 

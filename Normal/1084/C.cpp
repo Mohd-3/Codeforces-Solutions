@@ -9,29 +9,36 @@ typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 const int INF = 0x3f3f3f3f;
 
-string s;
 int n, M = 1e9+7;
+ll st[100001], en[100001];
 ll ans;
+string s;
+bool ok = 1;
 int main() {
     IOS;
     cin >> s;
     n = s.size();
-    ans = 1;
-    ll cnt = 0;
     for (int i = 0; i < n; ++i) {
-        if (s[i] == 'a') {
-            cnt++;
-        } else if (s[i] == 'b') {
-            if (cnt) {
-                ans = ((ans%M) * (cnt+1)%M)%M;
-                cnt = 0;
-            }
+        st[i] = en[i] = s[i]=='a';
+        ans += s[i]=='a';
+    }
+    for (int i = 1; i < n; ++i) {
+        st[i] += st[i-1];
+    }
+    for (int i = n-2; ~i; --i) {
+        en[i] += en[i+1];
+    }
+
+    for (int i = 1; i < n-1; ++i) {
+        if (s[i] == 'b' && ok) {
+            ans = (ans%M + (st[i]*en[i])%M)%M;
+            ok = 0;
+        } else if (s[i] == 'a') {
+            ok = 1;
         }
     }
-    if (cnt) {
-        ans = ((ans%M) * (cnt+1)%M)%M;
-    }
-    cout << ans-1 << endl;
+    cout << ans%M << endl;
+
 
     return 0;
 }
