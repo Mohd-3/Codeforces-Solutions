@@ -22,21 +22,16 @@ int main()
         for (int i = 0; i < n; ++i) {
             cin >> arr[i].second;
         }
-        sort(arr, arr+n);
-         ll mx = arr[k-1].first;
-        for (int i = 0; i < n; ++i) {
-            if (arr[i].first > mx) {
-                break;
-            }
-            v.emplace_back(arr[i]);
-        }
-        sort(v.begin(), v.end(), [](const pair<ll, ll>& a, const pair<ll, ll>& b) {
-             return b.second < a.second;
+        sort(arr, arr+n, [](const pair<ll, ll>& a, const pair<ll, ll>& b) {
+             if (a.first==b.first) {
+                return b.second < a.second;
+             }
+             return a.first < b.first;
              });
-        mx = 0;
+         ll mx = 0;
         for (int i = 0; i < k; ++i) {
-            ans += v[i].second;
-            mx = max(mx, v[i].first);
+            ans += arr[i].second;
+            mx = max(mx, arr[i].first);
         }
         cout << mx << " " << ans << endl;
      }
